@@ -1,5 +1,5 @@
 """
-WSGI config for News project.
+WSGI config for NEWS project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
