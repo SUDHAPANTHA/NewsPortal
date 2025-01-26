@@ -1,19 +1,22 @@
+<!-- Riht content -->
 <div class="col-lg-4">
   {% for post in posts %}
-  <div class="trand-right-single d-flex">
-    <div class="trand-right-img">
-      <img
-        src="{{ post.featured_image.url }}"
-        alt="{{ post.title }}"
-        style="width: 150px; height: auto; object-fit: cover"
-      />
+
+    <div class="trand-right-single d-flex">
+      <div class="trand-right-img">
+        <img src="{{ post.featured_image.url }}"
+             alt="{{ post.title }}"
+             width="180px" />
+      </div>
+      <div class="trand-right-cap">
+        <span class="color1">{{ post.category.name }}</span>
+        <h4>
+          <a href="details.html">{{ post.title }}</a>
+        </h4>
+      </div>
     </div>
-    <div class="trand-right-cap">
-      <span class="color1">{{ post.title }}</span>
-      <h4>
-        <a href="details.html">Welcome To The Sudha Online News Portal</a>
-      </h4>
-    </div>
-  </div>
+
   {% endfor %}
+
+
 </div>
