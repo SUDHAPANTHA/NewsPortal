@@ -2,7 +2,11 @@
   {% for post in posts %}
   <div class="trand-right-single d-flex">
     <div class="trand-right-img">
-      <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" />
+      <img
+        src="{{ post.featured_image.url }}"
+        alt="{{ post.title }}"
+        style="width: 150px; height: auto; object-fit: cover"
+      />
     </div>
     <div class="trand-right-cap">
       <span class="color1">{{ post.title }}</span>
