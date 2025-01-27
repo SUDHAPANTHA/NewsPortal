@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-
 from news_app.models import Post
-
+from django.urls import reverse_lazy
+from django.views.generic.edit import FormView
+from .forms import ContactForm
 class HomePageView(ListView):
     model = Post
     template_name = "aznews/home.html"
@@ -37,3 +38,12 @@ class HomePageView(ListView):
 
         return context
 
+class ContactView(FormView):
+    template_name = 'aznews/contact.html'
+    form_class = ContactForm
+    success_url = reverse_lazy('contact') 
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+    def form_invalid(self, form):
+        return super().form_invalid(form)
