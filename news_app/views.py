@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from news_app.models import Post
+from news_app.models import Category, Post, Tag
 from django.urls import reverse_lazy
 from django.views.generic.edit import FormView
 from .forms import ContactForm
@@ -36,6 +36,8 @@ class HomePageView(ListView):
             published_at__isnull=False, status="active"
         ).order_by("-published_at")[:7]
 
+        context['tags'] = Tag.objects.all()[:10]
+        context['categories'] = Category.objects.all()[:3]
         return context
 
 class ContactView(FormView):
@@ -47,3 +49,14 @@ class ContactView(FormView):
         return super().form_valid(form)
     def form_invalid(self, form):
         return super().form_invalid(form)
+
+class PostListView(ListView):
+    model = Post
+    template_name = "aznews/list/list.html"
+    context_object_name = "posts"
+    paginate_by = 1
+
+    def get_queryset(self):
+        return Post.objects.filter(
+            published_at__isnull=False, status="active"
+        ).order_by("-published_at")
