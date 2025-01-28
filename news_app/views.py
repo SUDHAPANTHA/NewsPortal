@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from datetime import timedelta
 from django.utils import timezone
 
-from newspaper.models import Category, Comment, Contact, Post, Tag
+from news_app.models import Category, Contact, Post, Tag
 
 class HomePageView(ListView):
     model = Post
