@@ -11,12 +11,22 @@
                     <nav>                  
                         <ul id="navigation">    
                             <li><a href="index.html">Home</a></li>
-                            <li><a href="categori.html">Category</a></li>
+                            {% for category in categores %}
+                            <li><a href="category.html">{{ category.name }}</a></li>
+                            {% endfor %}
                             <li><a href="about.html">About</a></li>
-                            <li><a href="latest_news.html">Latest News</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="{% url 'post-list' %}">Latest News</a></li>
+                            <li><a href="{% url 'contacts' %}">Contact</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="submenu">
+                                    <li>
+                                        <a href="#"> Tags</a>
+                                        <ul class="submenu">
+                                            {% for tag in tags %}
+                                            <li><a href="elements.html">{{ tag.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
                                     <li><a href="elements.html">Element</a></li>
                                     <li><a href="blog.html">Blog</a></li>
                                     <li><a href="single-blog.html">Blog Details</a></li>

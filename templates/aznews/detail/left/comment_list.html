@@ -1,0 +1,32 @@
+{% load static %}
+<div class="comments-area">
+   <h4>{{ comments|length }} {{ comments|length|pluralize:"Comment,Comments" }}</h4>
+   <div class="comment-list">
+       {% for comment in comments %}
+       <div class="single-comment d-flex justify-content-between">
+           <div class="user d-flex">
+               <div class="thumb">
+                   {% if comment.post.author.userprofile.image %}
+                   <img src="{{ post.author.userprofile.image.url }}" alt="User Avatar">
+                   {% else %}
+                   <img src="{% static 'img/blog/author.png' %}" alt="Default Avatar">
+                   {% endif %}
+               </div>
+               <div class="desc">
+                   <p class="comment">{{ comment.comment }}</p>
+                   <div class="d-flex justify-content-between">
+                       <div class="d-flex align-items-center">
+                           <h5>
+                               <a href="#">{{ comment.name }}</a>
+                           </h5>
+                           <p class="date">{{ comment.created_at|date:"F j, Y, g:i a" }}</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       {% empty %}
+       <p class="no-comments">No comments yet. Be the first to comment!</p>
+       {% endfor %}
+   </div>
+</div>
